@@ -32,7 +32,12 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 3.  Paste the copied text into your shell and press Enter.
 4.  Wait few minutes for the command to complete. You might not to restart, in such a case, run again the same command after the restart.
-5.  If you don't see any errors, you are ready to use docker. In a new powershell windows (for the environment variable to be accessible), type docker ps -a. Browse to http://localhost:9008 to access portainer.
+5.  dockerd user is created, hence its password must be created too, you don't need to fill the legacy linux passwd info:
+  ![image](https://user-images.githubusercontent.com/20702322/146357337-aa2a53c8-c87a-4d50-927d-8c593b8cd9ee.png). 
+  
+  In total you will have to type 5 times this password, better experience will come at some point.
+  
+7.  If you don't see any error, you are ready to use docker. In a new powershell windows (for the environment variable to be accessible), type `docker ps -a` or `docker run --name hello -v C:\test:/test hello-world`. Browse to http://localhost:9008 to access portainer.
 
 # How-To uninstall
 
@@ -42,7 +47,7 @@ If you lost this script, you can execute this command that will run from the scr
 ````
 curl.exe -L -o uninstall.ps1 "https://raw.githubusercontent.com/alexvaut/docker-wsl2-setup/main/install/uninstall.ps1"
 ./uninstall.ps1 -distrib 1 #to uninstall: the distrib, docker daemon, docker daemon proxy & portainer 
-./uninstall.ps1 -wsl 1 #to uninstall: wsl and everything from option 'distrib'
+./uninstall.ps1 -wsl 1 #to uninstall: wsl and everything from option 'distrib', it will require a restart.
 ````
 
 # Usage

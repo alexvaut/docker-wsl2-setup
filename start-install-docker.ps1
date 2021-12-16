@@ -2,7 +2,7 @@ if (-Not (Test-Path -Path .\__install)) { $dir = mkdir .\__install }
 
 curl.exe -L -o .\__install\install.zip "https://raw.githubusercontent.com/alexvaut/docker-wsl2-setup/main/install.zip"
 
-Expand-Archive __install\install.zip .\__install
+Expand-Archive -Force __install\install.zip .\__install
 
 .\__install\install\install.ps1
 

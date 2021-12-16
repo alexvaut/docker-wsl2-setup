@@ -68,7 +68,7 @@ else {
 if (-Not (Test-Path -Path C:/bin/docker.exe)) {    
     Write-Host "docker cli $DOCKER_CLI_VERSION installing ..."
     curl.exe -L -o .\staging\docker.zip "https://download.docker.com/win/static/stable/x86_64/docker-$DOCKER_CLI_VERSION.zip"
-    Expand-Archive .\staging\docker.zip .\staging\docker
+    Expand-Archive -Force .\staging\docker.zip .\staging\docker
     Move-Item .\staging\docker\docker\docker.exe C:/bin/docker.exe
     #Remove-Item -r .\staging\docker*
     Write-Host "docker cli $DOCKER_CLI_VERSION installed $($symbols.CHECKMARK)"

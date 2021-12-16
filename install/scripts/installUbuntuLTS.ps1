@@ -10,7 +10,7 @@ if (-Not (Test-Path -Path .\staging)) { $dir = mkdir .\staging }
 curl.exe -L -o .\staging\ubuntuLTS.appx https://aka.ms/wsl-ubuntu-1804
 
 Move-Item .\staging\ubuntuLTS.appx .\staging\$wslName.zip
-Expand-Archive .\staging\$wslName.zip .\staging\$wslName
+Expand-Archive -Force .\staging\$wslName.zip .\staging\$wslName
 
 if (-Not (Test-Path -Path $wslInstallationPath)) {
     mkdir $wslInstallationPath

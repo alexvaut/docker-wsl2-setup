@@ -31,7 +31,8 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 ````
 
 3.  Paste the copied text into your shell and press Enter.
-4.  Wait few minutes for the command to complete. If you don't see any errors, you are ready to use docker. In a new powershell windows 9for the environment variable to be accessible, type docker ps -a. Browse to http://localhost:9008 to access portainer.
+4.  Wait few minutes for the command to complete. You might not to restart, in such a case, run again the same command after the restart.
+5.  If you don't see any errors, you are ready to use docker. In a new powershell windows (for the environment variable to be accessible), type docker ps -a. Browse to http://localhost:9008 to access portainer.
 
 # How-To uninstall
 

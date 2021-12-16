@@ -1,5 +1,6 @@
 $DOCKER_COMPOSE_VERSION="v2.2.2"
 $DOCKER_CLI_VERSION="20.10.9"
+$binDir="C:/bin"
 
 $symbols = [PSCustomObject] @{    
     CHECKMARK = ([char]8730)
@@ -19,7 +20,7 @@ $n= $out.Split("\n").Count
 If ($n -gt 20) {
     Write-Host "Installing WSL..."
     ./scripts/installWSL.ps1
-    Write-Host "WSL is not installed yet, reboot is required"
+    Write-Host "WSL is not installed yet, a reboot is required."
     Pop-Location
     exit -1
 }
@@ -50,7 +51,7 @@ if (-not("$out" -like "*$name*")) {
     Write-Host "$name already installed $($symbols.CHECKMARK)"
  }
 
- $binDir="C:/bin"
+
 
  if (-Not (Test-Path -Path $binDir)) {
     mkdir $binDir
@@ -102,5 +103,7 @@ Write-Host "docker -v C:\test:/test hello-world"
 Write-Host "docker inspect hello"
 Write-Host ""
 Write-Host "Portainer is available on http://localhost:9008"
+Write-Host ""
+Write-Host ""
 
 Pop-Location

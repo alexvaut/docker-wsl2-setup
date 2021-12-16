@@ -46,8 +46,8 @@ If you lost this script, you can execute this command that will run from the scr
 
 ````
 curl.exe -L -o uninstall.ps1 "https://raw.githubusercontent.com/alexvaut/docker-wsl2-setup/main/install/uninstall.ps1"
-./uninstall.ps1 -distrib 1 #to uninstall: the distrib, docker daemon, docker daemon proxy & portainer 
-./uninstall.ps1 -wsl 1 #to uninstall: wsl and everything from option 'distrib', it will require a restart.
+./uninstall.ps1 -distrib #to uninstall: the distrib, docker daemon, docker daemon proxy & portainer 
+./uninstall.ps1 -wsl     #to uninstall: wsl and everything from option 'distrib', it will require a restart.
 ````
 
 # Usage

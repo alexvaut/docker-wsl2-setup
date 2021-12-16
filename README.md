@@ -39,7 +39,9 @@ When installing the script, the uninstall script 'uninstall.ps1' is downloaded a
 If you lost this script, you can execute this command that will run from the script hosted on github:
 
 ````
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/alexvaut/docker-wsl2-setup/main/install/uninstall.ps1'))
+curl.exe -L -o uninstall.ps1 "https://raw.githubusercontent.com/alexvaut/docker-wsl2-setup/main/install/uninstall.ps1"
+./uninstall.ps1 -distrib 1 #to uninstall: the distrib, docker daemon, docker daemon proxy & portainer 
+./uninstall.ps1 -wsl 1 #to uninstall: wsl and everything from option 'distrib'
 ````
 
 # Usage

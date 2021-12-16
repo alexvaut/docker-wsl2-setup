@@ -11,7 +11,4 @@ Move-Item -Force  .\__install\install\uninstall.ps1 .\uninstall.ps1
 
 Start-Sleep -Seconds 1
 
-try { Remove-Item -r .\__install }
-catch { 
-    # do nothing
-}
+Remove-Item -r .\__install -ErrorAction Ignore

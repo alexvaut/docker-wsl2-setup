@@ -7,7 +7,7 @@ Expand-Archive __install\install.zip .\__install
 .\__install\install\install.ps1
 
 Move-Item -Force .\__install\install\start-dockerd.ps1 .\start-dockerd.ps1
-Move-Item -Force  .\__install\install\uninstall-docker.ps1 .\uninstall-docker.ps1
+Move-Item -Force  .\__install\install\uninstall-docker.ps1 .\uninstall.ps1
 
 Start-Sleep -Seconds 1
 

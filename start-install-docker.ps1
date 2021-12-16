@@ -10,6 +10,10 @@ $path = [System.Environment]::GetFolderPath("Desktop")
 Move-Item -Force .\__install\install\start-dockerd.ps1 "$path\start-dockerd.ps1"
 Move-Item -Force  .\__install\install\uninstall.ps1 .\uninstall.ps1
 
+Write-Host ""
+Write-Host "From now on, to start docker after a reboot, execute the powershell script 'start-dockerd.ps1' available in the desktop."
+Write-Host ""
+
 Start-Sleep -Seconds 1
 
 Remove-Item -r .\__install -ErrorAction Ignore

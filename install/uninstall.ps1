@@ -7,7 +7,14 @@ $isDone=$false
 
 if ($distrib -or $wsl) {    
     wsl --unregister ubuntu-18.04-docker
+    $path = [System.Environment]::GetFolderPath("Desktop")
+    Remove-Item -ErrorAction Ignore "$path\start-dockerd.ps1"
     Write-Host "Distrib ubuntu-18.04-docker is now removed."    
+
+    Remove-Item -ErrorAction Ignore "C:/bin/docker.exe"
+    Remove-Item -ErrorAction Ignore "C:/bin/docker-compose.exe" 
+    Write-Host "Docker client and docker-compose are now removed."    
+    
     $isDone=$true
 }
 

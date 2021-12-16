@@ -107,9 +107,9 @@ $SUDO apt install "docker-ce=5:$DOCKER_DAEMON_VERSION~3-0~ubuntu-bionic" "docker
 if [ $NEW_USER ] ; then
   echo
   echo "Adding user $USERNAME"  
-  $SUDO adduser "$USERNAME"
+  $SUDO adduser --disabled-password --gecos "" "$USERNAME"
   if ! $SUDO getent shadow | grep -q "^$USERNAME:\$" ; then
-    $SUDO passwd "$USERNAME"
+    echo "dockerd" | $SUDO passwd "$USERNAME" --stdin     
   fi
 fi
 

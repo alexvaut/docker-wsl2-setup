@@ -99,12 +99,8 @@ Write-Host ""
 Write-Host "To run docker and docker-compose clients, start a new shell (so that all env var are setup)."
 Write-Host "To test mounting of volumes with windows path: "
 Write-Host "docker run --name hello -v C:\test:/test hello-world"
-Write-Host "docker -v C:\test:/test hello-world"
 Write-Host "docker inspect hello"
 Write-Host ""
 Write-Host "Portainer is available on http://localhost:9008"
-Write-Host ""
-Write-Host "From now on, to start docker, execute the powershell script 'start-dockerd.ps1' available in the desktop."
-Write-Host ""
 
 Pop-Location

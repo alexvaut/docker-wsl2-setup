@@ -31,13 +31,8 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 ````
 
 3.  Paste the copied text into your shell and press Enter.
-4.  Wait few minutes for the command to complete. You might not to restart, in such a case, run again the same command after the restart.
-5.  dockerd user is created, hence its password must be created too, you don't need to fill the legacy linux passwd info:
-  ![image](https://user-images.githubusercontent.com/20702322/146357337-aa2a53c8-c87a-4d50-927d-8c593b8cd9ee.png). 
-  
-  In total you will have to type 5 times this password, better experience will come at some point.
-  
-7.  If you don't see any error, you are ready to use docker. In a new powershell windows (for the environment variable to be accessible), type `docker ps -a` or `docker run --name hello -v C:\test:/test hello-world`. Browse to http://localhost:9008 to access portainer.
+4.  Wait few minutes for the command to complete. You might have to restart if wsl is not already installed, in such a case, run again the same command after the restart.
+5.  If you don't see any error, you are ready to use docker. In a new powershell window (for the environment variable to be accessible), type `docker ps -a` or `docker run --name hello -v C:\test:/test hello-world`. Browse to http://localhost:9008 to access portainer.
 
 # How-To uninstall
 
@@ -52,10 +47,13 @@ curl.exe -L -o uninstall.ps1 "https://raw.githubusercontent.com/alexvaut/docker-
 
 # Usage
 
+To start docker daemon, right click on the desktop icon "start-dockerd.ps1". 
+
+![image](https://user-images.githubusercontent.com/20702322/146447447-307286b1-338b-4367-9462-d443e7a4efc4.png)
+
 To login on any registry like docker hub, just use the command line ``docker login -u username``
 
 # Versions
-
 
 | Component  | Version |
 | ------------- | ------------- |
@@ -67,15 +65,19 @@ To login on any registry like docker hub, just use the command line ``docker log
 | docker client (windows) | 20.10.9  |
 | docker compose (windows) | v2.2.2  |
 
-
 # Tests
 
 - This has been tested on Windows 10.0.19043
 - Integration with Visual Studio 2022 and docker-compose workflow is ok
 - Integration with [Visual Studio Code Remote - Containers](https://code.visualstudio.com/docs/remote/containers) is ok
 
+# Troubleshooting
 
-# References
+- The name of the wsl distribution is "ubuntu-18.04-docker"
+- In the ubuntu distribution, the dockerd password is "dockerd" in case you need log in wsl.
+- Type ``wsl -t ubuntu-18.04-docker`` to stop any process (including docker daemon and its containers) running in the distrib. Calling the script "start-dockerd.ps1" on the desktop will start the distrib.
+
+# credits
 
 This work has been done with the help of several sources (that were copy/pasted and modified):
 - https://github.com/kaisalmen/wsltooling

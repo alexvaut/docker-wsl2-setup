@@ -79,7 +79,7 @@ else {
 }
 
 #setup environment variables
-$addPath = "C:\bin"
+$addPath = $binDir
 $regexAddPath = [regex]::Escape($addPath)
 $paths = [Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User)
 $arrPath = $paths -split ';' | Where-Object {$_ -notMatch "^$regexAddPath\\?"}

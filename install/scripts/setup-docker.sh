@@ -16,6 +16,10 @@
 # OUT="$(mktemp)"; wget -q -O - https://raw.githubusercontent.com/bowmanjd/docker-wsl/main/setup-docker.sh > $OUT; . $OUT
 
 
+DOCKER_DAEMON_VERSION=20.10.12
+DOCKER_CLI_VERSION=20.10.12
+PORTAINER_VERSION=1.24.2
+
 DOCKER_GID=36257
 
 POWERSHELL="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
@@ -96,7 +100,7 @@ $SUDO apt-get install -y --no-install-recommends apt-transport-https ca-certific
 $SUDO curl -fsSL https://download.docker.com/linux/ubuntu/gpg | $SUDO gpg --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable" | $SUDO tee /etc/apt/sources.list.d/docker.list
 $SUDO apt update
-$SUDO apt install docker-ce docker-ce-cli containerd.io -y
+$SUDO apt install "docker-ce=5:$DOCKER_DAEMON_VERSION~3-0~ubuntu-bionic" "docker-ce-cli=5:$DOCKER_CLI_VERSION~3-0~ubuntu-bionic" containerd.io -y
      
 
 if [ $NEW_USER ] ; then
@@ -166,7 +170,7 @@ touch "/etc/docker/daemon.json"
 DOCKERD_CONFIG='{ "features": { "buildkit": true }, "hosts": ["tcp://0.0.0.0:2375", "unix:///var/run/docker.sock"], "log-driver": "local"}'
 echo
 echo "A new /etc/docker/daemon.json will be created or overwritten with the below contents."
-printf "%s" "$DOCKERD_CONFIG"
+echo "$DOCKERD_CONFIG"
 if [ -r "/etc/docker/daemon.json" ] ; then
   echo "This will replace the existing file, which currently contains:"
   cat "/etc/docker/daemon.json"
@@ -207,5 +211,5 @@ echo "dockerd started"
 
 echo "Installing portainer as a container ..."
 docker volume create portainer_data
-docker run -d -p 9008:9000 --name portainer --restart=always -v portainer_data:/data --add-host=host.docker.internal:host-gateway portainer/portainer -H tcp://host.docker.internal:2375
+docker run -d -p 9008:9000 --name portainer --restart=always -v "/var/run/docker.sock:/var/run/docker.sock" -v portainer_data:/data portainer/portainer:$PORTAINER_VERSION -H unix:///var/run/docker.sock
 echo "Installing portainer as a container done."

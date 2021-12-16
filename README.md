@@ -61,11 +61,12 @@ To login on any registry like docker hub, just use the command line ``docker log
 | ------------- | ------------- |
 | WSL2  | Latest version when deployed  |
 | ubuntu 18.04 LTS  | Upgraded to latest packages when deployed  |
-| docker daemon  | Latest version when deployed  |
+| docker daemon  | 20.10.12  |
 | docker daemon API proxy  | v0.1  |
-| portainer  | Latest version when deployed |
-| docker client  | v20.10.9  |
-| docker client  | v2.2.2  |
+| portainer  | 1.24.2 |
+| docker client (windows) | 20.10.9  |
+| docker compose (windows) | v2.2.2  |
+
 
 # Tests
 

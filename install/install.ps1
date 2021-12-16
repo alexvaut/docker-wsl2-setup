@@ -20,6 +20,7 @@ If ($n -gt 20) {
     Write-Host "Installing WSL..."
     ./scripts/installWSL.ps1
     Write-Host "WSL is not installed yet, reboot is required"
+    Pop-Location
     exit -1
 }
 

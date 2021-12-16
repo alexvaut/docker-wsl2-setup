@@ -21,9 +21,10 @@ DOCKER_CLI_VERSION=20.10.12
 PORTAINER_VERSION=1.24.2
 
 DOCKER_GID=36257
+DOCKER_USERNAME="dockerd"
 
 POWERSHELL="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
-SUDO_DOCKERD="%docker ALL=(ALL)  NOPASSWD: /usr/bin/dockerd"
+SUDO_DOCKERD="%docker ALL=(ALL)  NOPASSWD: /usr/bin/dockerd, /home/dockerd/proxy-docker"
 
 confirm () {
   printf "%sIs this OK [Y/n/q]:" "$1"
@@ -64,7 +65,7 @@ confedit () {
 
 # If root, query for username
 if [ "$USER" = "root" ]; then  
-  USERNAME="dockerd"
+  USERNAME=$DOCKER_USERNAME
   printf "Non-root username to use: $USERNAME"
   getent passwd | grep -q "^$USERNAME:" && unset NEW_USER || NEW_USER="true"
   SUDO=""
@@ -154,7 +155,7 @@ fi
 NORMALIZED=$(echo "$SUDO_DOCKERD" | sed 's/\s\+/\\s\\+/g')
 if ! $SUDO sh -c 'EDITOR=cat visudo 2> /dev/null' | grep -q "^$NORMALIZED"; then  
   echo "Enabling passwordless sudo access to launch dockerd for everyone in group docker."
-  echo "$SUDO_DOCKERD" | $SUDO sh -c "EDITOR='tee -a' visudo 1>/dev/null"  
+  echo "$SUDO_DOCKERD" | $SUDO sh -c "EDITOR='tee -a' visudo 1>/dev/null"    
 fi
 
 USERID=$(id -u "$USERNAME")
@@ -189,6 +190,12 @@ printf "#!/bin/sh\n\nDOCKER_DISTRO='%s'\n" "$WSL_DISTRO_NAME" > "$LAUNCHER_TEMP"
 cat <<-'EOF' >> "$LAUNCHER_TEMP"
 /mnt/c/Windows/System32/wsl.exe -d $DOCKER_DISTRO sh -c "nohup sudo -b dockerd < /dev/null > /tmp/dockerd.log 2>&1"
 /mnt/c/Windows/System32/wsl.exe -d $DOCKER_DISTRO sh -c "nohup sudo -b /home/dockerd/proxy-docker -l :2376 -r localhost:2375 < /dev/null > /tmp/proxy-docker.log 2>&1"
+until [ -r /var/run/docker.sock ] ; do
+  echo "Waiting for dockerd to start..."
+  sleep 1
+done
+echo "dockerd started"
+sleep 1
 EOF
 
 echo

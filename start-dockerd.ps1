@@ -1,1 +1,0 @@
-wsl -d ubuntu-18.04-docker -e  /home/dockerd/.local/bin/docker-service.sh

@@ -6,7 +6,8 @@ Expand-Archive -Force __install\install.zip .\__install
 
 .\__install\install\install.ps1
 
-Move-Item -Force .\__install\install\start-dockerd.ps1 .\start-dockerd.ps1
+$path = [System.Environment]::GetFolderPath("Desktop")
+Move-Item -Force .\__install\install\start-dockerd.ps1 "$path\start-dockerd.ps1"
 Move-Item -Force  .\__install\install\uninstall.ps1 .\uninstall.ps1
 
 Start-Sleep -Seconds 1

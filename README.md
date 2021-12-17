@@ -8,6 +8,18 @@ This repo contains scripts to install/uninstall:
 - [portainer](https://www.portainer.io/) to get a web UI on top of docker API.
 - [docker client](https://github.com/moby/moby) and [docker-compose](https://github.com/docker/compose) on windows
 
+What is does support:
+
+- [x] Easy install/uninstall
+- [x] Low overhead
+- [x] WSL2 Integration and installation
+- [x] Enabling BuiltKit
+- [x] localhost port mapping
+- [x] GUI (Portainer)
+- [x] Bind/mount files from host to VM
+- [x] Route from container back to linux host
+- [x] Integration with VS Code and many other IDEs
+
 # How-To install
 
 ## Prerequisities

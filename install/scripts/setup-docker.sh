@@ -108,9 +108,7 @@ if [ $NEW_USER ] ; then
   echo
   echo "Adding user $USERNAME"  
   $SUDO adduser --disabled-password --gecos "" "$USERNAME"
-  if ! $SUDO getent shadow | grep -q "^$USERNAME:\$" ; then
-    echo "dockerd" | $SUDO passwd "$USERNAME" --stdin     
-  fi
+  echo "$USERNAME:dockerd" | $SUDO chpasswd
 fi
 
 

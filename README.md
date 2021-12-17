@@ -53,8 +53,8 @@ If you lost this script, you can execute this command that will run from the scr
 
 ````
 curl.exe -L -o uninstall.ps1 "https://raw.githubusercontent.com/alexvaut/docker-wsl2-setup/main/install/uninstall.ps1"
-./uninstall.ps1 -distrib #to uninstall: the distrib, docker daemon, docker daemon proxy & portainer 
-./uninstall.ps1 -wsl     #to uninstall: wsl and everything from option 'distrib', it will require a restart.
+./uninstall.ps1 -distrib #to uninstall: the distrib, docker daemon, docker daemon proxy & portainer (AND ALL DATA: images, volumes, containers...)
+./uninstall.ps1 -wsl     #to uninstall: wsl and everything from option 'distrib'. It will require a restart.
 ````
 
 # Usage
@@ -86,10 +86,10 @@ To login on any registry like docker hub, just use the command line ``docker log
 # Troubleshooting
 
 - The name of the wsl distribution is "ubuntu-18.04-docker"
-- In the ubuntu distribution, the dockerd password is "dockerd" in case you need log in wsl.
+- In the ubuntu distribution, the dockerd password is "dockerd" in case you need log in wsl ``wsl -d ubuntu-18.04-docker``.
 - Type ``wsl -t ubuntu-18.04-docker`` to stop any process (including docker daemon and its containers) running in the distrib. Calling the script "start-dockerd.ps1" on the desktop will start the distrib.
 
-# credits
+# Credits
 
 This work has been done with the help of several sources (that were copy/pasted and modified):
 - https://github.com/kaisalmen/wsltooling

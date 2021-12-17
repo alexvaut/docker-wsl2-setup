@@ -85,9 +85,9 @@ To login on any registry like docker hub, just use the command line ``docker log
 
 # Troubleshooting
 
+- If something goes wrong, stop the distrib with ``wsl -t ubuntu-18.04-docker``. And start dockerd daemon (with the script on the desktop).
 - The name of the wsl distribution is "ubuntu-18.04-docker"
 - In the ubuntu distribution, the dockerd password is "dockerd" in case you need log in wsl ``wsl -d ubuntu-18.04-docker``.
-- Type ``wsl -t ubuntu-18.04-docker`` to stop any process (including docker daemon and its containers) running in the distrib. Calling the script "start-dockerd.ps1" on the desktop will start the distrib.
 
 # Credits
 

@@ -18,7 +18,8 @@ What is does support:
 - [x] GUI (Portainer)
 - [x] Bind/mount files from host to VM
 - [x] Route from container back to linux host
-- [x] Integration with VS Code and many other IDEs
+- [x] Integration with VS Code (remote dev container, docker extension) and VS Entreprise/Professional tested
+- [ ] Upgrade is not supported yet. Note that data and binaries are in the same WSL2 Distrib for now. When upgrade will be available, it will likely get rid of the distrib, hence all docker data will be gone (which might not be a bad thing considering all the internal data docker keeps that are hard to completely remove).
 
 # How-To install
 
